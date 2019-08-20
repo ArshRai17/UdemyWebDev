@@ -5,33 +5,13 @@ var express     = require("express"),
     Campground  = require("./models/campground"),
     seedDB      = require("./seeds")
 
-mongoose.connect("mongodb://localhost/yelp_camp", {useNewUrlParser: true});
+mongoose.connect("mongodb://localhost/yelp_camp_V3", {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 seedDB();
 
 
-// Campground.create(
-//     {
-//         name: "Granite Hill", 
-//         image: "https://media-cdn.tripadvisor.com/media/photo-s/03/8f/90/23/elkmont-campground.jpg",
-//         description: "This is a huge granite hill. No bathrooms. No water. Beautiful granite."
-        
-//     }, function(err, campground){
-//         if(err){
-//             console.log(err);
-//         } else {
-//             console.log("Newly create campground: ");
-//             console.log(campground);
-//         }
-//     });
 
-//   var campgrounds = [
-//          {name: "Salmon Creek", image:"https://cdn.shopify.com/s/files/1/2468/4011/products/campsite_1_600x.png?v=1524622915"},
-//          {name: "Granite Hill", image: "https://media-cdn.tripadvisor.com/media/photo-s/03/8f/90/23/elkmont-campground.jpg"},
-//          {name: "Mountain Goat's Rest", image:"https://grist.files.wordpress.com/2017/05/tent-campsite-by-river.jpg?w=1024&h=576&crop=1"},
-//          {name: "Mountain Goat's Rest", image:"https://grist.files.wordpress.com/2017/05/tent-campsite-by-river.jpg?w=1024&h=576&crop=1"}
-// ];
 
 app.get("/", function(req, res){
    res.render("landing"); 
@@ -77,10 +57,11 @@ app.get("/campgrounds/new", function(req, res){
 // SHOW - shows more info about one campground
 app.get("/campgrounds/:id", function(req, res) {
     //find the campground with provided ID
-    Campground.findById(req.params.id, function(err, foundCampground){
+    Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
         if(err){
             console.log(err);
         } else {
+            console.log(foundCampground);
             //render show template with that campground
             res.render("show", {campground: foundCampground});
         }

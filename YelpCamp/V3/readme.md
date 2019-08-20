@@ -45,7 +45,11 @@
 * Use module.exports
 * Require everything correctly!
 
-#Add comments to YelpCamp
+#Add Seeds File
 * Add a seeds.js file
-* Run the sees file every time the server starts
+* Run the seeds file every time the server starts
+
+#Add the Comment model!
+* Make error go away
+* Display comments on campground show page
 
