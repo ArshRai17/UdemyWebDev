@@ -67,3 +67,16 @@ NEW         /dogs/new   GET         Displays form to make a new dog
 CREATE      /dogs       POST        Add new dog to DB
 SHOW        /dogs/:id   GEt         Show info abou one dog
 
+INDEX       /campgrounds       
+NEW         /campgrounds/new   
+CREATE      /campgrounds     
+SHOW        /camgprounds/:id   
+
+##Nested Routes
+
+NEW         /campgrounds/:id/comments/new      GET
+CREATE      /campgrounds/:id/comments          POST
+
+
+
+
