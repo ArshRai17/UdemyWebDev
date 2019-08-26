@@ -12,3 +12,10 @@
 * Add Register routes
 * Add Register form
 
+#Auth CodeAlong Part 4
+* Add login routes
+* Add Login forms
+
+#Auth CodeAlong Part 5
+* Add logout route
+* Add isLoggedIn middleware
