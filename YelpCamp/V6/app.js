@@ -27,6 +27,11 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+//toggles the top login, signup, and logout tab on all routes
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    next();
+});
 
 app.get("/", function(req, res){
    res.render("landing"); 
