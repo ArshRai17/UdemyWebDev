@@ -5,4 +5,8 @@
 * Add Update Route
 * Fix $set problem
 
+#Deleting Campgrounds
+* Add Destroy Route
+* Add Delete button
+
 
